@@ -1,4 +1,4 @@
-# Label Studio 2.3.3
+# Label Studio 2.3.4
 
 Label Studio prepares marketplace and carrier shipping labels for printing on thermal or standard printers. It can capture visible labels or import PDF files. Label processing happens locally in the extension.
 
