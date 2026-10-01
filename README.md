@@ -1,28 +1,62 @@
-# Label Studio 2.3.4
+# Label Studio for Chrome
 
-Label Studio prepares marketplace and carrier shipping labels for printing on thermal or standard printers. It can capture visible labels or import PDF files. Label processing happens locally in the extension.
+Prepare shipping labels for thermal printers or US Letter sheets. Import a PDF, check the crop, add optional artwork, then save a PDF or open Chrome’s print preview. Processing happens locally in the extension.
 
-## Install in Chrome
+## Features
 
-1. Download `label-studio-2.3.3.zip` from **Assets** below and extract it to a folder you’ll keep.
-2. In Chrome, open `chrome://extensions`.
+- **Label sizes:** 4 × 6, 4 × 8, 6 × 4, A6, 100 × 150 mm, and custom sizes.
+- **4 × 8 options:** Print a full 4 × 8 shipping label, or keep a 4 × 6 label at full size with a separate two-inch area above it.
+- **Personalization:** Add a logo, image, or text. Choose from 12 text styles and see a live sample.
+- **Automatic placement:** Look for a clear top area or a divided bottom footer on each label. Artwork is skipped with a warning when no suitable space is found.
+- **Sheet layouts:** Print one, two, or four labels on US Letter paper. Artwork stays inside each individual label.
+- **Batch editing:** Select, reorder, crop, rotate, and inspect pages before output.
+
+## Install
+
+1. Download and extract the latest release ZIP.
+2. Open `chrome://extensions` in Chrome.
 3. Turn on **Developer mode**.
-4. Click **Load unpacked** and select the extracted folder containing `manifest.json`.
-5. Pin Label Studio from Chrome’s Extensions menu if you want quick access.
+4. Select **Load unpacked** and choose the extracted folder containing `manifest.json`.
+5. Pin **Label Studio — Shipping Labels** from Chrome’s Extensions menu if you want quick access.
 
-Keep the extracted folder in place while using the extension. To update, download and extract the new release, then load its folder from `chrome://extensions`.
+Keep the extracted folder in place while the extension is installed.
 
-## Use
+## Prepare a label
 
-Click the Label Studio toolbar icon on a supported page to capture a visible label, or choose a PDF from your device in the editor. Review the crop and every barcode before printing. You can save a prepared PDF or open Chrome’s print preview.
+1. Open Label Studio and choose a shipping-label PDF. You can also drop PDFs into the editor.
+2. Check the crop on every page. Keep the full address, service markings, and barcodes visible.
+3. Choose the label size, printer profile, and sheet layout.
+4. Optionally add text or an image. For a 4 × 6 label on 4 × 8 paper, select the mode with the separate top area.
+5. Check the label and sheet previews, then save the PDF or open print preview.
 
-In Chrome’s print dialog, select the matching paper size and printer. Check the scaling, margins, and headers before printing.
+In Chrome’s print dialog, choose the matching paper size, **100% or actual size**, no margins, and no headers or footers. Four-label US Letter output reduces label size; confirm that your carrier accepts the result.
 
-## Notes
+## Placement and print checks
 
-- PDF imports work offline. Processing stays on your device.
-- Capturing labels from websites may require site access and depends on the page layout. Downloading the label as a PDF and importing it is a useful fallback.
-- Automatic crops and quality warnings are aids; inspect the output before use.
-- Physical printer output and live authenticated marketplace workflows have not been verified for this release.
+Automatic artwork placement avoids gaps between address, postage, and tracking sections. It may leave a label undecorated when it cannot find a suitable area. Inspect every preview before printing, especially the delivery address and all barcodes.
 
-See the project README and changelog for more details.
+The editor checks for some crop, image-quality, and barcode problems, but a passed check does not certify a physical print or guarantee a carrier scan.
+
+## Privacy
+
+PDF editing and image processing happen locally. Imported files are not uploaded by the extension. Capturing a label from a website may require permission to access that site. Printer settings and text choices are stored locally; an uploaded logo or image stays in the current editor tab.
+
+## Limits
+
+- 25 MB per input PDF
+- 50 MB per batch
+- 100 pages per batch
+- Password-protected PDFs are not supported
+
+## Development
+
+There is no build step; the extension folder can be loaded unpacked in Chrome.
+
+```bash
+npm test
+npm run release
+```
+
+`npm run release` runs checks and creates a ZIP in `release/`.
+
+Label Studio is an independent tool and is not affiliated with USPS, Vinted, Amazon, or other carriers and marketplaces.
